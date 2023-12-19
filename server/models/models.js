@@ -19,7 +19,8 @@ const Course = sequelize.define('Courses', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     title: {type: DataTypes.STRING },
     description: {type: DataTypes.STRING},
-    img: {type: DataTypes.STRING}
+    img: {type: DataTypes.STRING},
+    id_role: {type: DataTypes.INTEGER}
 })
 
 const Block = sequelize.define('Block', {
@@ -27,7 +28,6 @@ const Block = sequelize.define('Block', {
     id_parent: {type: DataTypes.STRING},
     title: {type: DataTypes.STRING},
     description: {type: DataTypes.STRING},
-    img: {type: DataTypes.STRING, allowNull: false}
 })
 
 const Item = sequelize.define('Item', {
@@ -38,6 +38,9 @@ const Item = sequelize.define('Item', {
 
 Course.hasMany(Block)
 Block.belongsTo(Course)
+
+Role.hasMany(Course)
+Course.belongsTo(Role)
 
 Role.hasMany(User)
 User.belongsTo(Role)

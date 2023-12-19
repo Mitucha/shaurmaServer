@@ -2,8 +2,8 @@ const Router = require('express')
 const router = new Router()
 const blockController = require('../controllers/blockController')
 
-router.post('/', blockController.delete)
-router.get('/', blockController.all)
-router.get('/:id',blockController.change)
+router.get('/all', blockController.all)
+router.get('/allByRole', blockController.allByRole)
+router.post('/add', blockController.add)
 
 module.exports = router
