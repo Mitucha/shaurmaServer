@@ -32,7 +32,7 @@ const Block = sequelize.define('Block', {
 
 const Item = sequelize.define('Item', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    id_parent: {type: DataTypes.STRING},
+    id_parent: {type: DataTypes.INTEGER},
     item: {type: DataTypes.STRING}
 })
 
