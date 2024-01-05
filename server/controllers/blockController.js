@@ -19,7 +19,15 @@ class BlockController {
         
     }
     async delete(req, res) {
-        
+        const {id} = req.query
+        const deleteElement = await Block.destroy({where: {id: id}})
+        return res.json(deleteElement)
+    }
+    async quantityByCourse(req, res) {
+        const {id_parent} = req.query;
+        const quantityBlocks = await Block.findAll({where: {id_parent: id_parent}})
+        const result = quantityBlocks.length
+        return res.json(result)
     }
 }
 

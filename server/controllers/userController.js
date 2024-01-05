@@ -63,10 +63,32 @@ class UserController {
       return res.json("Вы не указали поле ID");
     }
   }
+
+  async updateLevel(req, res) {
+    const {id, level} = req.body;
+    const element = await User.findOne({where: {id: id}});
+    element.level = level;
+    await element.save()
+    return res.json(element)
+  }
+
+  async allByRole(req, res) {
+    const {role} = req.query
+    console.log(req.query)
+    //const allByRole = await User.findAll({where: {id_role: role}})
+    //return res.json(allByRole)
+  }
+
   async delete(req, res) {
     const { id } = req.query;
     const deleteElement = await User.destroy({ where: { id: id } });
     return res.json(deleteElement);
+  }
+
+  async usersByRole(req, res) {
+    const { id_role } = req.query
+    const users = await User.findAll({where: {id_role: id_role}})
+    return res.json(users)
   }
 }
 

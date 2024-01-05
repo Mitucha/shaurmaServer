@@ -58,7 +58,7 @@ class CourseController {
     } else{return res.json("Вы не указали поле ID")}
   }
   async delete(req, res) {
-    const {id} = req.body
+    const {id} = req.query
     const deleteElement = await Course.destroy({where: {id: id}})
     return res.json(deleteElement)
   }

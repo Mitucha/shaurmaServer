@@ -13,6 +13,7 @@ const User = sequelize.define( 'user', {
     password: {type: DataTypes.STRING},
     access: {type: DataTypes.BOOLEAN, defaultValue: false},
     id_role: {type: DataTypes.INTEGER},
+    level: {type: DataTypes.STRING, defaultValue: '[1, 1]'}
 })
 
 const Course = sequelize.define('Courses', {
@@ -33,7 +34,9 @@ const Block = sequelize.define('Block', {
 const Item = sequelize.define('Item', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     id_parent: {type: DataTypes.INTEGER},
-    item: {type: DataTypes.STRING}
+    item: {type: DataTypes.TEXT},
+    test: {type: DataTypes.TEXT},
+    files: {type: DataTypes.TEXT}
 })
 
 Course.hasMany(Block)

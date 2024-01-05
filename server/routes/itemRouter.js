@@ -5,6 +5,7 @@ const itemController = require('../controllers/itemController')
 router.post('/create', itemController.create)
 router.get('/one', itemController.getOne)
 router.post('/delete', itemController.delete)
-router.get('/update', itemController.update)
+router.post('/update', itemController.update)
+router.post('/addFile', itemController.addFile)
 
 module.exports = router
