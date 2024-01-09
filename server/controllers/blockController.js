@@ -29,6 +29,14 @@ class BlockController {
         const result = quantityBlocks.length
         return res.json(result)
     }
+    async update(req, res) {
+        const { id, title, description, id_parent } = req.body
+        const deleteBlock = await Block.destroy({where: {id: id}})
+
+        const arr = await Block.create({id_parent, title, description})
+
+        return res.json(arr)
+    }
 }
 
 module.exports = new BlockController()

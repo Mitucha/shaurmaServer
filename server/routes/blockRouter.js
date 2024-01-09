@@ -5,6 +5,7 @@ const blockController = require('../controllers/blockController')
 router.get('/all', blockController.all)
 router.get('/allByRole', blockController.allByRole)
 router.post('/add', blockController.add)
+router.post('/update', blockController.update)
 router.delete('/delete', blockController.delete)
 router.get('/quantityByCourse', blockController.quantityByCourse)
 

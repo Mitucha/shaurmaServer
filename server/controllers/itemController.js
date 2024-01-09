@@ -37,6 +37,13 @@ class ItemController {
         await updateItem.save()
         return res.json(updateItem.files)
     }
+    async updateItemString(req, res) {
+        const { id, item } = req.body
+        const updateItem = await Item.findOne({where: {id_parent: id}})
+        updateItem.item = item
+        await updateItem.save()
+        return res.json(updateItem)
+    }
 }
 
 module.exports = new ItemController()

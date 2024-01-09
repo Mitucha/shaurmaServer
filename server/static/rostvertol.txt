@@ -1,0 +1,57 @@
+
+CREATE TABLE `departament` (
+  `id` int(50) UNSIGNED NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `documents` (
+  `id` int(50) UNSIGNED NOT NULL,
+  `passport` varchar(10) NOT NULL,
+  `snils` varchar(25) NOT NULL,
+  `phone` varchar(11) NOT NULL,
+  `med_book` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `positions` (
+  `id` int(50) UNSIGNED NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `salary` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `departament`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `documents`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `passport` (`passport`),
+  ADD UNIQUE KEY `snils` (`snils`),
+  ADD UNIQUE KEY `phone` (`phone`),
+  ADD UNIQUE KEY `med_book` (`med_book`);
+
+ALTER TABLE `positions`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `departament`
+  MODIFY `id` int(50) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `documents`
+  MODIFY `id` int(50) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `positions`
+  MODIFY `id` int(50) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+CREATE TABLE `rostvertol_db`.`workers` ( 
+    `id` INT(50) NOT NULL AUTO_INCREMENT , 
+    `first_name` VARCHAR(50) NOT NULL , 
+    `last_name` VARCHAR(50) NOT NULL , 
+    `id_position` INT(50), 
+    `id_documents` INT(50), 
+    `id_departament` INT(50), 
+    
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`id_position`)  REFERENCES `positions` (`id`),
+    FOREIGN KEY (`id_documents`)  REFERENCES `documents` (`id`),
+    FOREIGN KEY (`id_departament`)  REFERENCES `departament` (`id`)) ENGINE = InnoDB;
+COMMIT;
